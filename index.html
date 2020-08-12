@@ -17,7 +17,13 @@
 				money += n * item.price
 				console.log('n', n, money)
 			})
-			console.log('money', money)
+			const n = data.reduce((total, item) => {
+				if (typeof total === 'object') {
+					total = total.price
+				}
+				return total + item.price
+			})
+			console.log('money', n / 3, money)
 			return money
 		}
 		const data = [{
