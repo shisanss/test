@@ -24,7 +24,7 @@
 				return total + item.price
 			})
 			console.log('money', n / 3, money)
-			return money
+			return `共借 ${n / 3}万，总利息 ${money}元`
 		}
 		const data = [{
 			date: '2020-03-08',
@@ -60,9 +60,12 @@
 			date: '2020-08-08',
 			price: -6
 		}, {
-			date: '2020-08-20',
+			date: '2020-08-21',
+			price: 3
+		}, {
+			date: '2020-08-30',
 			price: 3
 		}]
-		add(data)
+		document.write(add(data))
 	</script>
 </html>
