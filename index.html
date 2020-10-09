@@ -7,7 +7,7 @@
 	<body>
 	</body>
 	<script type="text/javascript">
-		function add(arr) {
+		function sum(arr) {
 			let money = 0
 			const end = new Date().getTime()
 			const day = 60 * 60 * 24 * 1000
@@ -86,7 +86,15 @@
 		}, {
 			date: '2020-10-01',
 			price: -6
+		}, {
+			date: '2020-10-02',
+			price: -6
+		}, {
+			date: '2020-10-03',
+			price: -6
+		}, {
+			date: '2020-10-07',
+			price: -3
 		}]
-		document.write(add(data))
-	</script>
+		document.write(sum(data))	</script>
 </html>
