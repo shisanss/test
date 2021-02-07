@@ -3,19 +3,35 @@
 	<head>
 		<meta charset="utf-8">
 		<title>算利息</title>
+		<style type="text/css">
+			body {
+				line-height: 30px;
+				padding: 10px;
+			}
+		</style>
 	</head>
 	<body>
 	</body>
 	<script type="text/javascript">
 		function sum(arr) {
-			let money = 0
-			const end = new Date().getTime()
-			const day = 60 * 60 * 24 * 1000
+			let info = '',
+				money = 0,
+				sumMoney = 0
+			const end = new Date().getTime(),
+				 day = 60 * 60 * 24 * 1000
 			arr.forEach(item => {
 				const start = new Date(item.date + ' 00:00').getTime()
 				const n = Math.ceil((end > start ? end - start : 0) / day)
-				money += n * item.price
-				console.log('n', n, money)
+				sumMoney += n * item.price
+				const today = {}
+				if (item.price > 0) {
+					today.value = '借'
+					today.date = item.date
+				} else {
+					today.value = '还'
+					today.date = getLocalTime(start)
+				}
+				info += `${today.date} 日 ${today.value} 了 ${ Math.abs(item.price) / 3} 万元，当前借款数：${money += item.price / 3} 万元 <br />`
 			})
 			const n = data.reduce((total, item) => {
 				if (typeof total === 'object') {
@@ -23,9 +39,15 @@
 				}
 				return total + item.price
 			})
-			console.log('money', n / 3, money)
-			return `共借 ${n / 3}万，总利息 ${money}元`
+			info += `共借 ${n / 3}万，总利息 ${sumMoney}元`
+			return info
 		}
+		
+		function getLocalTime(nS, minusDay = 1) {
+			const date = new Date(parseInt(nS) - minusDay * 24 * 60 * 60 * 1000).toLocaleString().split('上午')[0]
+		   return date.replace(/\//g, '-')
+		}
+		
 		const data = [{
 			date: '2020-03-08',
 			price: 9
