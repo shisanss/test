@@ -38,7 +38,7 @@
 					total = total.price
 				}
 				return total + item.price
-			})
+			}, 0)
 			info += `共借 ${n / 3}万，总利息 ${sumMoney}元`
 			return info
 		}
@@ -48,7 +48,7 @@
 		   return date.replace(/\//g, '-')
 		}
 		
-		const data = [{
+		var data = [{
 			date: '2020-03-08',
 			price: 9
 		}, {
@@ -141,6 +141,10 @@
 		}, {
 			date: '2020-12-10',
 			price: -6
+		}]
+		data = [{
+			date: '2021-2-10',
+			price: 3
 		}]
 		document.write(sum(data))	</script>
 </html>
